@@ -50,3 +50,5 @@ const cursos = [
       "descricao": "Descubra os segredos da autêntica culinária italiana, preparando pratos clássicos como massas frescas, risotos e sobremesas tradicionais."
     }
   ]
+
+  export default { cursos }

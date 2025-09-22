@@ -11,10 +11,17 @@ const getAllCursos = (req, res) => {
         resultado = resultado.filter(
             (c) => c.categoria.toLowerCase() === categoria.toLowerCase()
         );
-    }
+    };
+
     if (instrutor) {
         resultado = resultado.filter(
             (i) => i.instrutor.toLowerCase() === instrutor.toLowerCase()
+        );
+    };
+
+    if (nivel) {
+        resultado = resultado.filter(
+            (n) => n.nivel.toLowerCase() === nivel.toLowerCase()
         );
     };
 
@@ -23,3 +30,12 @@ const getAllCursos = (req, res) => {
         data: resultado
     });
 };
+
+const getCursoById = (req, res) => {
+    const id = parseInt(req.params.id);
+    const curso = cursos.find((c) => c.id === id);
+
+    
+}
+
+export { getAllCursos };
