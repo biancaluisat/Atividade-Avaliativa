@@ -49,7 +49,7 @@ const getCursoById = (req, res) => {
 };
 
 const createCurso = (req, res) => {
-    const { titulo, instrutor, categoria, duracao, preco, nivel, descricao } = req.body;
+    const { titulo, instrutor, categoria, duracao_minutos, preco, nivel, descricao } = req.body;
 
     if (!titulo) {
         return res.status(400).json({
@@ -72,7 +72,7 @@ const createCurso = (req, res) => {
         });
     }
     
-    if (!duracao) {
+    if (!duracao_minutos) {
         return res.status(400).json({
             success: false,
             message: "O campo 'duracao' é obrigatório"
@@ -107,7 +107,7 @@ const createCurso = (req, res) => {
         });
     };
 
-    if (duracao < 60) {
+    if (duracao_minutos < 60) {
         return res.status(400).json({
             success: false,
             message: "O curso deve ter mais de uma hora."
@@ -123,7 +123,15 @@ const createCurso = (req, res) => {
         preco: parseInt(preco),
         nivel,
         descricao
-    }
-}
+    };
+
+    cursos.push(novoCurso);
+
+    res.status(201).json({
+        success: true,
+        data: novoCurso 
+    });
+
+};
 
 export { getAllCursos, getCursoById, createCurso };
