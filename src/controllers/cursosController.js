@@ -134,4 +134,35 @@ const createCurso = (req, res) => {
 
 };
 
-export { getAllCursos, getCursoById, createCurso };
+const deleteCurso = (req, res) => {
+    const { id } = req.params
+
+    if (isNaN(id)) {
+        return res.status(400).json({
+            success: false,
+            message: "O id deve ser válido."
+        });
+    };
+
+    const idParaApagar = parseInt(id);
+    const cursoParaRemover = cursos.find(c => c.id === idParaApagar);
+
+    if (!cursoParaRemover) {
+        return res.status(404).json({
+            success: false,
+            message: "O id não exite."
+        });
+    };
+
+    const cursoFiltrado = cursos.filter(c => c.id !== id);
+
+    cursos.splice(0, cursos.length, ...cursoFiltrado);
+
+    return res.status(200).json({
+        success: true,
+        message: "O curso foi removido com sucesso."
+    });
+
+};
+
+export { getAllCursos, getCursoById, createCurso, deleteCurso };
