@@ -165,4 +165,63 @@ const deleteCurso = (req, res) => {
 
 };
 
-export { getAllCursos, getCursoById, createCurso, deleteCurso };
+const updateCurso = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { titulo, instrutor, categoria, duracao_minutos, preco, nivel, descricao } = req.body;
+    const idParaEditar = id;
+
+    if (isNaN(idParaEditar)) {
+        return res.status(400).json({
+            success: false,
+            message: "O id deve ser válido."
+        });
+    };
+
+    const cursoExiste = cursos.find(c => c.id === idParaEditar);
+
+    if (!cursoExiste) {
+        return res.status(404).json({
+            success: false,
+            message: "O curso não existe.",
+        });
+    };
+
+    if (preco < 0) {
+        return res.status(400).json({
+            success: false,
+            message: "O preço não pode ser negativo."
+        });
+    };
+
+    if (duracao_minutos < 60) {
+        return res.status(400).json({
+            success: false,
+            message: "O curso deve ter mais de uma hora."
+        });
+    };
+
+    const cursoAtualizado = cursos.map(c => c.id === idParaEditar
+        ? {
+            ...c,
+            ...(titulo && { titulo }),
+            ...(instrutor && { instrutor }),
+            ...(categoria && { categoria }),
+            ...(duracao_minutos && { duracao_minutos: parseInt(duracao_minutos) }),
+            ...(preco && { preco: parseInt(preco) }),
+            ...(nivel && { nivel }),
+            ...(descricao && { descricao })
+        }
+        : c
+    );
+
+    cursos.splice(0, cursos.length, ...cursoAtualizado);
+
+    const cursoEditado = cursos.find(c => c.id === idParaEditar);
+
+    res.status(200).json({
+        success: true,
+        data: cursoEditado
+    });
+};
+
+export { getAllCursos, getCursoById, createCurso, deleteCurso, updateCurso };
