@@ -28,12 +28,12 @@ const getAllCursos = (req, res) => {
     if(preco) {
         if(preco === "Gratuito") {
             resultado = resultado.filter(c => c.preco === 0);
-        } else if (preco === "1-100") {
+        } else if (preco === "1-50") {
             resultado = resultado.filter(c => c.preco >= 1 && c.preco <= 50);
         } else if (preco === "50-100") {
             resultado = resultado.filter(c => c.preco > 50 && c.preco <= 100);
         } else if (preco === "+100") { 
-            resultado = resultado.filter(c => c.preco > 100)
+            resultado = resultado.filter(c => c.preco > 100.00)
         };
     };
 
