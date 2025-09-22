@@ -154,7 +154,7 @@ const deleteCurso = (req, res) => {
         });
     };
 
-    const cursoFiltrado = cursos.filter(c => c.id !== id);
+    const cursoFiltrado = cursos.filter(c => c.id != id);
 
     cursos.splice(0, cursos.length, ...cursoFiltrado);
 
