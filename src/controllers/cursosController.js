@@ -35,7 +35,17 @@ const getCursoById = (req, res) => {
     const id = parseInt(req.params.id);
     const curso = cursos.find((c) => c.id === id);
 
-    
-}
+    if (!curso) {
+        res.status(404).json({
+            success: false,
+            message: `Id ${id} não encontrado.`
+        });
+};
 
-export { getAllCursos };
+    res.status(200).json({
+        total: curso.length,
+        data: curso
+    });
+};
+
+export { getAllCursos, getCursoById };
