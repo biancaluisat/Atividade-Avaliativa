@@ -5,7 +5,7 @@ const cursos = [
       "instrutor": "Dr. Alex Costa",
       "categoria": "Tecnologia",
       "duracao_minutos": 1200,
-      "preco": 450.00,
+      "preco": 90.00,
       "nivel": "Iniciante",
       "descricao": "Aprenda os conceitos fundamentais da IA, desde aprendizado de máquina até redes neurais. Ideal para quem está começando na área."
     },
@@ -25,7 +25,7 @@ const cursos = [
       "instrutor": "João Pereira",
       "categoria": "Desenvolvimento",
       "duracao_minutos": 2400,
-      "preco": 899.90,
+      "preco": 158.90,
       "nivel": "Avançado",
       "descricao": "Crie aplicações web completas e dinâmicas utilizando as tecnologias mais populares do mercado: React no front-end e Node.js no back-end."
     },
@@ -35,7 +35,7 @@ const cursos = [
       "instrutor": "Ana Santos",
       "categoria": "Negócios",
       "duracao_minutos": 600,
-      "preco": 250.00,
+      "preco": 50.00,
       "nivel": "Iniciante",
       "descricao": "Estratégias eficazes de marketing digital para impulsionar a visibilidade e as vendas do seu pequeno negócio. Inclui mídias sociais e SEO."
     },
