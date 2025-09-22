@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-
+import cursosRoutes from "./src/routes/cursosRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
     res.send("Servidor Online!");
 });
 
-
+app.use("/cursos", cursosRoutes);
 
 app.listen(serverPort, () => {
     console.log(`Server ON! http://localhost:${serverPort}`);
